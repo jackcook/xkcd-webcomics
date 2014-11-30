@@ -30,6 +30,8 @@ class ComicViewController: UIViewController {
         var url = NSURL(string: "http://api.cosmicbyte.com/xkcd/xkcd.txt")!
         var request = NSURLRequest(URL: url)
         
+        MBProgressHUD.showHUDAddedTo(comicView, animated: true)
+        
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             var list = NSString(data: data, encoding: NSUTF8StringEncoding)! as String
             var items = split(list) {$0 == "\n"}
@@ -55,6 +57,8 @@ class ComicViewController: UIViewController {
                     comics.append(comic)
                 }
             }
+            
+            self.comicView.load(comics.last!)
         }
         
         nc.addObserver(self, selector: "comicTapped", name: tapNotification, object: nil)
@@ -83,13 +87,11 @@ class ComicViewController: UIViewController {
     }
     
     func swipeLeft() {
-        var url = NSURL(string: "http://imgs.xkcd.com/comics/jurassic_world.png")!
-        comicView.load(url)
+
     }
     
     func swipeRight() {
-        var url = NSURL(string: "http://imgs.xkcd.com/comics/background_screens.png")!
-        comicView.load(url)
+
     }
     
     @IBAction func searchButton(sender: AnyObject) {

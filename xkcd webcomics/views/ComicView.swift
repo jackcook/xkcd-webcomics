@@ -23,8 +23,8 @@ class ComicView: UIView, NSURLConnectionDataDelegate {
         self.addGestureRecognizer(tap)
     }
     
-    func load(url: NSURL) {
-        var request = NSURLRequest(URL: url)
+    func load(comic: Comic) {
+        var request = NSURLRequest(URL: comic.url)
         var connection = NSURLConnection(request: request, delegate: self)
         connection?.start()
     }
@@ -55,5 +55,7 @@ class ComicView: UIView, NSURLConnectionDataDelegate {
         }
         
         imageView.frame = CGRectMake((self.bounds.width - size.width) / 2, (self.bounds.height - size.height) / 2, size.width, size.height)
+        
+        MBProgressHUD.hideHUDForView(self, animated: true)
     }
 }
