@@ -97,11 +97,7 @@ class ComicViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var keyboardFrame = self.view.convertRect(rawFrame, fromView: nil)
         
         var tableFrame = CGRectMake(0, topBar.frame.origin.y + topBar.frame.size.height, screen.width, screen.height - topBar.frame.origin.y - topBar.frame.size.height - keyboardFrame.size.height)
-        tableView = UITableView(frame: tableFrame, style: UITableViewStyle.Plain)
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        self.view.addSubview(tableView)
+        tableView.frame = tableFrame
     }
     
     func keyPressed(notification: NSNotification) {
@@ -217,6 +213,13 @@ class ComicViewController: UIViewController, UITableViewDelegate, UITableViewDat
             searchBar.userInteractionEnabled = true
             searchBar.returnKeyType = UIReturnKeyType.Search
             searchBar.becomeFirstResponder()
+            
+            var tableFrame = CGRectMake(0, topBar.frame.origin.y + topBar.frame.size.height, screen.width, screen.height - topBar.frame.origin.y - topBar.frame.size.height)
+            tableView = UITableView(frame: tableFrame, style: UITableViewStyle.Plain)
+            tableView.delegate = self
+            tableView.dataSource = self
+            
+            self.view.addSubview(tableView)
         } else {
             titleLabel.alpha = 1
             searchBar.alpha = 0
