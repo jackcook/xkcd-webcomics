@@ -43,6 +43,7 @@ class ComicViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         nc.addObserver(self, selector: "keyboardOnScreen:", name: UIKeyboardDidShowNotification, object: nil)
         nc.addObserver(self, selector: "keyPressed:", name: UITextFieldTextDidChangeNotification, object: nil)
+        nc.addObserver(self, selector: "orientationChanged", name: UIDeviceOrientationDidChangeNotification, object: nil)
         nc.addObserver(self, selector: "loadFromNotification", name: loadFromNotificationNotification, object: nil)
         nc.addObserver(self, selector: "comicTapped", name: tapNotification, object: nil)
         
@@ -53,6 +54,11 @@ class ComicViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var swipeRight = UISwipeGestureRecognizer(target: self, action: "previousComic")
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(swipeRight)
+    }
+    
+    func orientationChanged() {
+        var l = UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)
+        statusBarBackground.alpha = l ? 0 : 1
     }
     
     func loadFromNotification() {
