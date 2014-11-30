@@ -12,7 +12,10 @@ import UIKit
 let screen = UIScreen.mainScreen().bounds
 
 let nc = NSNotificationCenter.defaultCenter()
+let loadFromNotificationNotification = "LoadFromNotificationNotification"
 let tapNotification = "TapNotification"
 
 var comics = [Comic]()
 var current = 0
+
+var openFromNotification = false

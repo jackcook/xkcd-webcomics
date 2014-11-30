@@ -33,19 +33,42 @@ class ComicViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var url = NSURL(string: "http://api.cosmicbyte.com/xkcd/xkcd.txt")!
-        var request = NSURLRequest(URL: url)
-        
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        loadComics()
         
         titleLabel.text = "Loading..."
         numberLabel.text = ""
         
         searchBar.alpha = 0
-        searchBar.userInteractionEnabled = false
-        
         nextButton.alpha = 0
-        nextButton.userInteractionEnabled = false
+        
+        nc.addObserver(self, selector: "keyboardOnScreen:", name: UIKeyboardDidShowNotification, object: nil)
+        nc.addObserver(self, selector: "keyPressed:", name: UITextFieldTextDidChangeNotification, object: nil)
+        nc.addObserver(self, selector: "loadFromNotification", name: loadFromNotificationNotification, object: nil)
+        nc.addObserver(self, selector: "comicTapped", name: tapNotification, object: nil)
+        
+        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "nextComic")
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        var swipeRight = UISwipeGestureRecognizer(target: self, action: "previousComic")
+        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(swipeRight)
+    }
+    
+    func loadFromNotification() {
+        titleLabel.text = "Loading..."
+        numberLabel.text = ""
+        nextButton.alpha = 0
+        comicView.imageView.image = UIImage()
+        loadComics()
+    }
+    
+    func loadComics() {
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        comics = [Comic]()
+        
+        var url = NSURL(string: "http://api.cosmicbyte.com/xkcd/xkcd.txt")!
+        var request = NSURLRequest(URL: url)
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
             var list = NSString(data: data, encoding: NSUTF8StringEncoding)! as String
@@ -75,18 +98,6 @@ class ComicViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             self.loadComic(comics.count + 1)
         }
-        
-        nc.addObserver(self, selector: "keyboardOnScreen:", name: UIKeyboardDidShowNotification, object: nil)
-        nc.addObserver(self, selector: "keyPressed:", name: UITextFieldTextDidChangeNotification, object: nil)
-        nc.addObserver(self, selector: "comicTapped", name: tapNotification, object: nil)
-        
-        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "nextComic")
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
-        self.view.addGestureRecognizer(swipeLeft)
-        
-        var swipeRight = UISwipeGestureRecognizer(target: self, action: "previousComic")
-        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
-        self.view.addGestureRecognizer(swipeRight)
     }
     
     func keyboardOnScreen(notification: NSNotification) {
