@@ -15,3 +15,4 @@ let nc = NSNotificationCenter.defaultCenter()
 let tapNotification = "TapNotification"
 
 var comics = [Comic]()
+var current = 0

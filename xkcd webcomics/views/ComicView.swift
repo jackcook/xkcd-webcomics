@@ -46,16 +46,14 @@ class ComicView: UIView, NSURLConnectionDataDelegate {
         imageView.image = image
         
         var actualSize = image!.size
-        var size = CGSizeZero
+        var size = CGSizeMake(self.bounds.width, self.bounds.width / (actualSize.width / actualSize.height))
         
-        if (actualSize.width / actualSize.height) > (self.bounds.width / self.bounds.height) {
-            size = CGSizeMake(self.bounds.width, self.bounds.width / (actualSize.width / actualSize.height))
-        } else {
-            size = CGSizeMake(screen.height / (actualSize.height / actualSize.width), self.bounds.height)
+        if size.height > self.frame.size.height {
+            size = CGSizeMake(self.bounds.height / (actualSize.height / actualSize.width), self.bounds.height)
         }
         
         imageView.frame = CGRectMake((self.bounds.width - size.width) / 2, (self.bounds.height - size.height) / 2, size.width, size.height)
         
-        MBProgressHUD.hideHUDForView(self, animated: true)
+        MBProgressHUD.hideHUDForView(self.superview, animated: true)
     }
 }

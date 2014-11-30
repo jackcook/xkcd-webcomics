@@ -33,6 +33,14 @@
                                     <constraint firstAttribute="height" constant="64" id="ydX-0m-THi"/>
                                 </constraints>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pdd-4j-gM8">
+                                <rect key="frame" x="64" y="36" width="468" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="hth-8M-7hr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I Don't Want Directions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQi-do-7gD">
                                 <rect key="frame" x="68" y="26" width="464" height="48"/>
                                 <constraints>
@@ -96,7 +104,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="nextButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="1sR-o5-ouO"/>
+                                    <action selector="nextComic" destination="vXZ-lx-hvc" eventType="touchUpInside" id="j3Z-HO-EQv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zY-cV-eJc">
@@ -110,7 +118,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="previousButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Agk-YN-i8E"/>
+                                    <action selector="previousComic" destination="vXZ-lx-hvc" eventType="touchUpInside" id="S58-B6-e6f"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -118,6 +126,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="orH-uj-wqG" secondAttribute="trailing" id="2WX-2D-RTx"/>
                             <constraint firstItem="gb6-1F-WqH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="2cq-VO-1WI"/>
+                            <constraint firstItem="pdd-4j-gM8" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="16" id="2k9-GF-9NY"/>
                             <constraint firstAttribute="trailing" secondItem="iAH-sZ-oJ5" secondAttribute="trailing" id="3gL-fN-Xeu"/>
                             <constraint firstItem="IDB-Tp-9JH" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="4Ly-zs-Lzh"/>
                             <constraint firstItem="2hp-K7-jZG" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="4ln-LS-75G"/>
@@ -135,8 +144,10 @@
                             <constraint firstAttribute="trailing" secondItem="IDB-Tp-9JH" secondAttribute="trailing" id="Z30-19-1kQ"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="HjX-T0-57m" secondAttribute="bottom" id="b3M-OG-ykD"/>
                             <constraint firstItem="2hp-K7-jZG" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="byj-2n-cJV"/>
+                            <constraint firstItem="pdd-4j-gM8" firstAttribute="leading" secondItem="gb6-1F-WqH" secondAttribute="trailing" constant="4" id="f7N-1j-URi"/>
                             <constraint firstAttribute="trailing" secondItem="HjX-T0-57m" secondAttribute="trailing" id="fcB-oN-sTh"/>
                             <constraint firstItem="IDB-Tp-9JH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="iNx-42-zrx"/>
+                            <constraint firstItem="iAH-sZ-oJ5" firstAttribute="leading" secondItem="pdd-4j-gM8" secondAttribute="trailing" constant="8" id="krL-tb-tcd"/>
                             <constraint firstItem="iAH-sZ-oJ5" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="lBm-jd-3e4"/>
                             <constraint firstItem="uQi-do-7gD" firstAttribute="leading" secondItem="gb6-1F-WqH" secondAttribute="trailing" constant="8" id="nTg-8d-i8X"/>
                             <constraint firstAttribute="trailing" secondItem="2hp-K7-jZG" secondAttribute="trailing" id="ohe-Zd-L2b"/>
@@ -152,6 +163,7 @@
                         <outlet property="numberLabel" destination="DKm-xT-Gh2" id="jZO-BE-E4L"/>
                         <outlet property="previousButton" destination="4zY-cV-eJc" id="mod-rR-RmG"/>
                         <outlet property="randomButton" destination="iAH-sZ-oJ5" id="c4y-jJ-ZlH"/>
+                        <outlet property="searchBar" destination="pdd-4j-gM8" id="6yb-aY-AsZ"/>
                         <outlet property="searchButton" destination="gb6-1F-WqH" id="Jb2-lu-QAN"/>
                         <outlet property="statusBarBackground" destination="2hp-K7-jZG" id="XDa-L0-Ddu"/>
                         <outlet property="titleLabel" destination="uQi-do-7gD" id="OF0-tu-61G"/>
