@@ -19,6 +19,8 @@
 		EB5A6E071A2ACB68007A3C1B /* image04.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5A6E051A2ACB68007A3C1B /* image04.png */; };
 		EB5A6E081A2ACB68007A3C1B /* image05.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5A6E061A2ACB68007A3C1B /* image05.png */; };
 		EB5A6E0A1A2ACBD7007A3C1B /* image06.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5A6E091A2ACBD7007A3C1B /* image06.png */; };
+		EB5A6E0C1A2ACF06007A3C1B /* ComicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5A6E0B1A2ACF06007A3C1B /* ComicView.swift */; };
+		EB5A6E0E1A2AD4E3007A3C1B /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5A6E0D1A2AD4E3007A3C1B /* Common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		EB5A6E051A2ACB68007A3C1B /* image04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image04.png; sourceTree = "<group>"; };
 		EB5A6E061A2ACB68007A3C1B /* image05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image05.png; sourceTree = "<group>"; };
 		EB5A6E091A2ACBD7007A3C1B /* image06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image06.png; sourceTree = "<group>"; };
+		EB5A6E0B1A2ACF06007A3C1B /* ComicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComicView.swift; path = views/ComicView.swift; sourceTree = "<group>"; };
+		EB5A6E0D1A2AD4E3007A3C1B /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,7 @@
 				EB5A6DE21A2ABAFE007A3C1B /* Images.xcassets */,
 				EB5A6DE41A2ABAFE007A3C1B /* LaunchScreen.xib */,
 				EB5A6DD91A2ABAFE007A3C1B /* Supporting Files */,
+				EB5A6E0D1A2AD4E3007A3C1B /* Common.swift */,
 			);
 			path = "xkcd webcomics";
 			sourceTree = "<group>";
@@ -142,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				EB5A6DFF1A2AC287007A3C1B /* ComicViewController.swift */,
+				EB5A6E0B1A2ACF06007A3C1B /* ComicView.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -252,7 +258,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB5A6E0E1A2AD4E3007A3C1B /* Common.swift in Sources */,
 				EB5A6E001A2AC287007A3C1B /* ComicViewController.swift in Sources */,
+				EB5A6E0C1A2ACF06007A3C1B /* ComicView.swift in Sources */,
 				EB5A6DDC1A2ABAFE007A3C1B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
