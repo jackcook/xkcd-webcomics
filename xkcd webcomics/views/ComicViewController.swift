@@ -25,6 +25,8 @@ class ComicViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet var comicView: ComicView!
     
+    var hidden = false
+    
     var tableView: UITableView!
     var tableData = [String]()
     
@@ -144,17 +146,19 @@ class ComicViewController: UIViewController, UITableViewDelegate, UITableViewDat
             searchBar.resignFirstResponder()
         }
         
+        hidden = !hidden
+        
         UIView.animateWithDuration(0.5) { () -> Void in
-            self.topBar.alpha = self.topBar.alpha == 0 ? 1 : 0
-            self.searchButton.alpha = self.searchButton.alpha == 0 ? 1 : 0
-            self.titleLabel.alpha = self.titleLabel.alpha == 0 ? 1 : 0
+            self.topBar.alpha = self.hidden ? 0 : 1
+            self.searchButton.alpha = self.hidden ? 0 : 1
+            self.titleLabel.alpha = self.hidden ? 0 : 1
             self.searchBar.alpha = 0
-            self.randomButton.alpha = self.randomButton.alpha == 0 ? 1 : 0
+            self.randomButton.alpha = self.hidden ? 0 : 1
             
-            self.bottomBar.alpha = self.bottomBar.alpha == 0 ? 1 : 0
-            self.previousButton.alpha = self.previousButton.alpha == 0 ? 1 : 0
-            self.numberLabel.alpha = self.numberLabel.alpha == 0 ? 1 : 0
-            self.nextButton.alpha = self.nextButton.alpha == 0 ? 1 : 0
+            self.bottomBar.alpha = self.hidden ? 0 : 1
+            self.previousButton.alpha = !self.hidden && !(current == 0) ? 1 : 0
+            self.numberLabel.alpha = self.hidden ? 0 : 1
+            self.nextButton.alpha = !self.hidden && !(current + 1 == comics.last!.number) ? 1 : 0
         }
     }
     
