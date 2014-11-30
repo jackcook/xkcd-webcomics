@@ -21,6 +21,7 @@
 		EB5A6E0A1A2ACBD7007A3C1B /* image06.png in Resources */ = {isa = PBXBuildFile; fileRef = EB5A6E091A2ACBD7007A3C1B /* image06.png */; };
 		EB5A6E0C1A2ACF06007A3C1B /* ComicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5A6E0B1A2ACF06007A3C1B /* ComicView.swift */; };
 		EB5A6E0E1A2AD4E3007A3C1B /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5A6E0D1A2AD4E3007A3C1B /* Common.swift */; };
+		EB5A6E131A2AE007007A3C1B /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5A6E121A2AE007007A3C1B /* Comic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		EB5A6E091A2ACBD7007A3C1B /* image06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image06.png; sourceTree = "<group>"; };
 		EB5A6E0B1A2ACF06007A3C1B /* ComicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComicView.swift; path = views/ComicView.swift; sourceTree = "<group>"; };
 		EB5A6E0D1A2AD4E3007A3C1B /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		EB5A6E121A2AE007007A3C1B /* Comic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		EB5A6DD81A2ABAFE007A3C1B /* xkcd webcomics */ = {
 			isa = PBXGroup;
 			children = (
+				EB5A6E111A2ADFFD007A3C1B /* util */,
 				EB5A6DFE1A2AC272007A3C1B /* views */,
 				EB5A6DFB1A2ABE44007A3C1B /* images */,
 				EB5A6DDB1A2ABAFE007A3C1B /* AppDelegate.swift */,
@@ -150,6 +153,14 @@
 				EB5A6E0B1A2ACF06007A3C1B /* ComicView.swift */,
 			);
 			name = views;
+			sourceTree = "<group>";
+		};
+		EB5A6E111A2ADFFD007A3C1B /* util */ = {
+			isa = PBXGroup;
+			children = (
+				EB5A6E121A2AE007007A3C1B /* Comic.swift */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +271,7 @@
 			files = (
 				EB5A6E0E1A2AD4E3007A3C1B /* Common.swift in Sources */,
 				EB5A6E001A2AC287007A3C1B /* ComicViewController.swift in Sources */,
+				EB5A6E131A2AE007007A3C1B /* Comic.swift in Sources */,
 				EB5A6E0C1A2ACF06007A3C1B /* ComicView.swift in Sources */,
 				EB5A6DDC1A2ABAFE007A3C1B /* AppDelegate.swift in Sources */,
 			);

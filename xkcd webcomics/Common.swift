@@ -13,3 +13,5 @@ let screen = UIScreen.mainScreen().bounds
 
 let nc = NSNotificationCenter.defaultCenter()
 let tapNotification = "TapNotification"
+
+var comics = [Comic]()

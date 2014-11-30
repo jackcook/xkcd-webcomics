@@ -27,8 +27,35 @@ class ComicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var url = NSURL(string: "http://imgs.xkcd.com/comics/fmri.png")!
-        comicView.load(url)
+        var url = NSURL(string: "http://api.cosmicbyte.com/xkcd/xkcd.txt")!
+        var request = NSURLRequest(URL: url)
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
+            var list = NSString(data: data, encoding: NSUTF8StringEncoding)! as String
+            var items = split(list) {$0 == "\n"}
+            var pattern = NSRegularExpression(pattern: "\".*?\"", options: nil, error: nil)
+            for item in items {
+                var matches = pattern?.matchesInString(item, options: nil, range: NSMakeRange(0, countElements(item)))
+                if matches?.count > 0 {
+                    var title = NSString(string: item).substringWithRange(matches![0].range!)
+                    title = title.stringByReplacingOccurrencesOfString("\"", withString: "", options: nil, range: nil)
+                    
+                    var imgurltxt = NSString(string: item).substringWithRange(matches![1].range!)
+                    imgurltxt = imgurltxt.stringByReplacingOccurrencesOfString("\"", withString: "", options: nil, range: nil)
+                    var imgurl = NSURL(string: imgurltxt)!
+                    
+                    var csv = split(item) {$0 == ","}
+                    var num = csv[0].toInt()!
+                    
+                    var comic = Comic()
+                    comic.number = num
+                    comic.title = title
+                    comic.url = imgurl
+                    
+                    comics.append(comic)
+                }
+            }
+        }
         
         nc.addObserver(self, selector: "comicTapped", name: tapNotification, object: nil)
         
