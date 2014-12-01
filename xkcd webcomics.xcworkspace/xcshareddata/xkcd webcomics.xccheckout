@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>54EB4AB7-7BCE-472D-924C-15A76E6BD3CA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>xkcd webcomics</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>177F0A8BE92006929DC3CB1163E13E0125AA5EB8</key>
+		<string>https://github.com/jackcook/xkcd-webcomics.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>xkcd webcomics.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>177F0A8BE92006929DC3CB1163E13E0125AA5EB8</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jackcook/xkcd-webcomics.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>177F0A8BE92006929DC3CB1163E13E0125AA5EB8</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>177F0A8BE92006929DC3CB1163E13E0125AA5EB8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>xkcd%20webcomics</string>
+		</dict>
+	</array>
+</dict>
+</plist>
