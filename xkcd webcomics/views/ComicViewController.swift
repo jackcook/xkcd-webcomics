@@ -172,11 +172,11 @@ class ComicViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func nextComic() {
-        loadComic(current.number + 1)
+        loadComic(current.number + (current.number == 403 ? 2 : 1))
     }
     
     @IBAction func previousComic() {
-        loadComic(current.number - 1)
+        loadComic(current.number - (current.number == 405 ? 2 : 1))
     }
     
     func loadComic(comic: Comic) {
