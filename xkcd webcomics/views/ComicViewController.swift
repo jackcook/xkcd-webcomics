@@ -74,8 +74,10 @@ class ComicViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func orientationChanged() {
-        var l = UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)
-        statusBarBackground.alpha = l ? 0 : 1
+        if (UIDevice.currentDevice().userInterfaceIdiom != .Pad) {
+            var l = UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation)
+            statusBarBackground.alpha = l ? 0 : 1
+        }
     }
     
     func loadFromNotification() {
