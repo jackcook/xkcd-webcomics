@@ -27,6 +27,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func applicationDidBecomeActive(application: UIApplication) {
+        application.applicationIconBadgeNumber = 0
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        var token = "\(deviceToken)".stringByReplacingOccurrencesOfString(" ", withString: "", options: nil, range: nil).stringByReplacingOccurrencesOfString("<", withString: "", options: nil, range: nil).stringByReplacingOccurrencesOfString(">", withString: "", options: nil, range: nil)
+        
+        var url = NSURL(string: "http://api.cosmicbyte.com/xkcd/submit_token.php?token=\(token)")!
+        var request = NSURLRequest(URL: url)
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
+        }
+    }
+    
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         nc.postNotificationName(loadFromNotificationNotification, object: nil)
     }

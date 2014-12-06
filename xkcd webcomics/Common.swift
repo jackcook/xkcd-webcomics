@@ -19,5 +19,3 @@ var current: Comic!
 var latest = 0
 
 var searchable = [Int:String]()
-
-var openFromNotification = false
