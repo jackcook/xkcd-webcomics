@@ -22,15 +22,6 @@
 		EB5A6E0C1A2ACF06007A3C1B /* ComicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5A6E0B1A2ACF06007A3C1B /* ComicView.swift */; };
 		EB5A6E0E1A2AD4E3007A3C1B /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5A6E0D1A2AD4E3007A3C1B /* Common.swift */; };
 		EB5A6E131A2AE007007A3C1B /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5A6E121A2AE007007A3C1B /* Comic.swift */; };
-		EB9956661A2BD02500436762 /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = EB9956621A2BD02500436762 /* Default-568h@2x~iphone.png */; };
-		EB9956671A2BD02500436762 /* Default-667h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = EB9956631A2BD02500436762 /* Default-667h@2x~iphone.png */; };
-		EB9956681A2BD02500436762 /* Default-736h@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = EB9956641A2BD02500436762 /* Default-736h@3x~iphone.png */; };
-		EB9956691A2BD02500436762 /* Default@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = EB9956651A2BD02500436762 /* Default@2x~iphone.png */; };
-		EB99566F1A2BD2E400436762 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EB99566A1A2BD2E400436762 /* Default-Landscape@2x~ipad.png */; };
-		EB9956701A2BD2E400436762 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EB99566B1A2BD2E400436762 /* Default-Landscape~ipad.png */; };
-		EB9956711A2BD2E400436762 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EB99566C1A2BD2E400436762 /* Default-Portrait@2x~ipad.png */; };
-		EB9956721A2BD2E400436762 /* Default-Landscape@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = EB99566D1A2BD2E400436762 /* Default-Landscape@3x~iphone.png */; };
-		EB9956731A2BD2E400436762 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EB99566E1A2BD2E400436762 /* Default-Portrait~ipad.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,15 +57,6 @@
 		EB5A6E0B1A2ACF06007A3C1B /* ComicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComicView.swift; path = views/ComicView.swift; sourceTree = "<group>"; };
 		EB5A6E0D1A2AD4E3007A3C1B /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		EB5A6E121A2AE007007A3C1B /* Comic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
-		EB9956621A2BD02500436762 /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
-		EB9956631A2BD02500436762 /* Default-667h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x~iphone.png"; sourceTree = "<group>"; };
-		EB9956641A2BD02500436762 /* Default-736h@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x~iphone.png"; sourceTree = "<group>"; };
-		EB9956651A2BD02500436762 /* Default@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x~iphone.png"; sourceTree = "<group>"; };
-		EB99566A1A2BD2E400436762 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
-		EB99566B1A2BD2E400436762 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
-		EB99566C1A2BD2E400436762 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
-		EB99566D1A2BD2E400436762 /* Default-Landscape@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@3x~iphone.png"; sourceTree = "<group>"; };
-		EB99566E1A2BD2E400436762 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,7 +158,6 @@
 		EB5A6DFB1A2ABE44007A3C1B /* images */ = {
 			isa = PBXGroup;
 			children = (
-				EB9956611A2BD02500436762 /* launch */,
 				EB5A6DFC1A2ABE44007A3C1B /* image01.png */,
 				EB5A6E011A2AC503007A3C1B /* image02.png */,
 				EB5A6E031A2AC9B4007A3C1B /* image03.png */,
@@ -203,22 +184,6 @@
 				EB2E0D651A2B699800ADB053 /* ObjectiveBridge.h */,
 			);
 			path = util;
-			sourceTree = "<group>";
-		};
-		EB9956611A2BD02500436762 /* launch */ = {
-			isa = PBXGroup;
-			children = (
-				EB99566A1A2BD2E400436762 /* Default-Landscape@2x~ipad.png */,
-				EB99566B1A2BD2E400436762 /* Default-Landscape~ipad.png */,
-				EB99566C1A2BD2E400436762 /* Default-Portrait@2x~ipad.png */,
-				EB99566D1A2BD2E400436762 /* Default-Landscape@3x~iphone.png */,
-				EB99566E1A2BD2E400436762 /* Default-Portrait~ipad.png */,
-				EB9956621A2BD02500436762 /* Default-568h@2x~iphone.png */,
-				EB9956631A2BD02500436762 /* Default-667h@2x~iphone.png */,
-				EB9956641A2BD02500436762 /* Default-736h@3x~iphone.png */,
-				EB9956651A2BD02500436762 /* Default@2x~iphone.png */,
-			);
-			path = launch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,21 +269,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB99566F1A2BD2E400436762 /* Default-Landscape@2x~ipad.png in Resources */,
 				EB5A6DE11A2ABAFE007A3C1B /* Main.storyboard in Resources */,
-				EB9956701A2BD2E400436762 /* Default-Landscape~ipad.png in Resources */,
-				EB9956731A2BD2E400436762 /* Default-Portrait~ipad.png in Resources */,
 				EB5A6E0A1A2ACBD7007A3C1B /* image06.png in Resources */,
-				EB9956671A2BD02500436762 /* Default-667h@2x~iphone.png in Resources */,
 				EB5A6E041A2AC9B4007A3C1B /* image03.png in Resources */,
-				EB9956661A2BD02500436762 /* Default-568h@2x~iphone.png in Resources */,
 				EB5A6E071A2ACB68007A3C1B /* image04.png in Resources */,
 				EB5A6DE31A2ABAFE007A3C1B /* Images.xcassets in Resources */,
-				EB9956691A2BD02500436762 /* Default@2x~iphone.png in Resources */,
-				EB9956721A2BD2E400436762 /* Default-Landscape@3x~iphone.png in Resources */,
 				EB5A6E021A2AC503007A3C1B /* image02.png in Resources */,
-				EB9956681A2BD02500436762 /* Default-736h@3x~iphone.png in Resources */,
-				EB9956711A2BD2E400436762 /* Default-Portrait@2x~ipad.png in Resources */,
 				EB5A6E081A2ACB68007A3C1B /* image05.png in Resources */,
 				EB5A6DFD1A2ABE44007A3C1B /* image01.png in Resources */,
 			);
