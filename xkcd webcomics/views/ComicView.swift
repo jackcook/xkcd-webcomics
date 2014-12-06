@@ -21,6 +21,22 @@ class ComicView: UIView, NSURLConnectionDataDelegate {
         
         var tap = UITapGestureRecognizer(target: self, action: "tap")
         self.addGestureRecognizer(tap)
+        
+        UIDevice.currentDevice().beginGeneratingDeviceOrientationNotifications()
+        nc.addObserver(self, selector: "orientationChanged:", name: UIDeviceOrientationDidChangeNotification, object: nil)
+    }
+    
+    func orientationChanged(notification: NSNotification) {
+        if imageView.image != nil {
+            var actualSize = imageView.image!.size
+            var size = CGSizeMake(self.bounds.width, self.bounds.width / (actualSize.width / actualSize.height))
+            
+            if size.height > self.frame.size.height {
+                size = CGSizeMake(self.bounds.height / (actualSize.height / actualSize.width), self.bounds.height)
+            }
+            
+            imageView.frame = CGRectMake((self.bounds.width - size.width) / 2, (self.bounds.height - size.height) / 2, size.width, size.height)
+        }
     }
     
     func load(comic: Comic) {

@@ -15,7 +15,9 @@ let nc = NSNotificationCenter.defaultCenter()
 let loadFromNotificationNotification = "LoadFromNotificationNotification"
 let tapNotification = "TapNotification"
 
-var comics = [Comic]()
-var current = 0
+var current: Comic!
+var latest = 0
+
+var searchable = [Int:String]()
 
 var openFromNotification = false

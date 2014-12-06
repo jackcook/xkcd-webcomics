@@ -54,6 +54,23 @@ class ComicViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var swipeRight = UISwipeGestureRecognizer(target: self, action: "previousComic")
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(swipeRight)
+        
+        var url = NSURL(string: "http://api.cosmicbyte.com/xkcd/xkcd.txt")!
+        var request = NSURLRequest(URL: url)
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
+            var list = NSString(data: data, encoding: NSUTF8StringEncoding) as String
+            var items = split(list) {$0 == "\n"}
+            for item in items {
+                var csv = split(item) {$0 == ","}
+                var num = csv[0].toInt()!
+                
+                csv.removeAtIndex(0)
+                var title = ",".join(csv)
+                
+                searchable[num] = title
+            }
+        }
     }
     
     func orientationChanged() {
@@ -71,38 +88,17 @@ class ComicViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func loadComics() {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        comics = [Comic]()
         
-        var url = NSURL(string: "http://api.cosmicbyte.com/xkcd/xkcd.txt")!
+        var url = NSURL(string: "http://xkcd.com/info.0.json")!
         var request = NSURLRequest(URL: url)
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
-            var list = NSString(data: data, encoding: NSUTF8StringEncoding)! as String
-            var items = split(list) {$0 == "\n"}
-            var pattern = NSRegularExpression(pattern: "\".*?\"", options: nil, error: nil)
-            for item in items {
-                var matches = pattern?.matchesInString(item, options: nil, range: NSMakeRange(0, countElements(item)))
-                if matches?.count > 0 {
-                    var title = NSString(string: item).substringWithRange(matches![0].range!)
-                    title = title.stringByReplacingOccurrencesOfString("\"", withString: "", options: nil, range: nil)
-                    
-                    var imgurltxt = NSString(string: item).substringWithRange(matches![1].range!)
-                    imgurltxt = imgurltxt.stringByReplacingOccurrencesOfString("\"", withString: "", options: nil, range: nil)
-                    var imgurl = NSURL(string: imgurltxt)!
-                    
-                    var csv = split(item) {$0 == ","}
-                    var num = csv[0].toInt()!
-                    
-                    var comic = Comic()
-                    comic.number = num
-                    comic.title = title
-                    comic.url = imgurl
-                    
-                    comics.append(comic)
+            if let comicData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary {
+                if let num = comicData["num"] as? Int {
+                    latest = num
+                    self.loadComic(num)
                 }
             }
-            
-            self.loadComic(comics.count + 1)
         }
     }
     
@@ -128,13 +124,13 @@ class ComicViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var number = parts[0].toInt()!
         
         searchButton(UIButton())
-        loadComic(number - 1)
+        loadComic(number)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var identifier = "SearchResult"
         var cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: identifier)
-        cell.textLabel.text = tableData[indexPath.row]
+        cell.textLabel!.text = tableData[indexPath.row]
         return cell
     }
     
@@ -144,8 +140,8 @@ class ComicViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func search(query: NSString) -> [String] {
         var data = [String]()
-        for comic in comics {
-            var comicString = "\(comic.number): \(comic.title)"
+        for (number, comic) in searchable {
+            var comicString = "\(number): \(comic)"
             if comicString.rangeOfString(query) != nil {
                 data.append(comicString)
             }
@@ -171,56 +167,55 @@ class ComicViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.bottomBar.alpha = self.hidden ? 0 : 1
             self.previousButton.alpha = !self.hidden && !(current == 0) ? 1 : 0
             self.numberLabel.alpha = self.hidden ? 0 : 1
-            self.nextButton.alpha = !self.hidden && !(current + 1 == comics.last!.number) ? 1 : 0
+            self.nextButton.alpha = !self.hidden && !(current == latest) ? 1 : 0
         }
     }
     
     @IBAction func nextComic() {
-        if current + 1 == comics.last!.number { return }
-        
-        var num = current + 1
-        if num + 1 == 404 { num = 404 }
-        if num + 1 == 1037 { num = 1037 }
-        loadComic(num)
+        loadComic(current.number + 1)
     }
     
     @IBAction func previousComic() {
-        if current == 0 { return }
-        
-        var num = current - 1
-        if num + 1 == 404 { num = 402 }
-        if num + 1 == 1037 { num = 1035 }
-        loadComic(num)
+        loadComic(current.number - 1)
     }
     
-    func loadComic(num: Int) {
-        var n = num
-        var comic: Comic!
-        
-        if n + 1 == 404 { n = 404 }
-        if n + 1 == 1037 { n = 1037 }
-        
-        for c in comics {
-            if c.number == n + 1 {
-                comic = c
-                break
-            }
-        }
-        
-        current = n
-        
+    func loadComic(comic: Comic) {
         titleLabel.text = comic.title
         numberLabel.text = "\(comic.number)"
         
         comicView.load(comic)
         
-        var last = current + 1 == comics.last!.number
+        var last = current.number == latest
         nextButton.alpha = last ? 0 : 1
         nextButton.userInteractionEnabled = last ? false : true
         
-        var first = current == 0
+        var first = current.number == 0
         previousButton.alpha = first ? 0 : 1
         previousButton.userInteractionEnabled = first ? false : true
+    }
+    
+    func loadComic(number: Int) {
+        var url = NSURL(string: "http://xkcd.com/\(number)/info.0.json")!
+        var request = NSURLRequest(URL: url)
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
+            if let comicData = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSDictionary {
+                if let num = comicData["num"] as? Int {
+                    if let title = comicData["safe_title"] as? String {
+                        if let image = comicData["img"] as? String {
+                            var comic = Comic()
+                            comic.number = num
+                            comic.title = title
+                            comic.url = NSURL(string: image)!
+                            
+                            current = comic
+                            
+                            self.loadComic(comic)
+                        }
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func searchButton(sender: AnyObject) {
@@ -248,8 +243,10 @@ class ComicViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func randomButton(sender: AnyObject) {
-        var rand = Int(arc4random_uniform(UInt32(comics.last!.number)))
-        loadComic(rand)
+        var rand = Int(arc4random_uniform(UInt32(searchable.count)))
+        if rand != 404 {
+            loadComic(rand)
+        }
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
